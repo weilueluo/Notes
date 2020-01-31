@@ -78,23 +78,7 @@ Every week B
 
 ## Lectures Slides
 
-- Lecture 01 (Introduction to Distributed Computing): [
-
-  powerpoint
-
-  ] - key point: think distributed! (
-
-  growth mindset
-
-  );
-
-   
-
-  on 8 fallacies
-
-  [what follows is last year's schedule - small changes in the order and updates will take place]
-
-  
+- Lecture 01 (Introduction to Distributed Computing): 
 
 - Lecture 02 (A few words about Parallel Computing): [[powerpoint](http://syllabus.cs.manchester.ac.uk/ugt/COMP28112/2017/lect02.ppt)], - [this video is related and recommended](http://www.youtube.com/watch?v=yjPBkvYh-ss)
 
