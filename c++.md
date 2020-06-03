@@ -35,7 +35,7 @@ There is no interface in c++, just create a class consists of only virtual funct
 
 ### Virtual / Polymorphism
 
-Marking a function `virtual` allows subclass method to be called, even if the referencing type is superclass. If a function is not virtual but overridden, it will be called according to the type of reference not the type of object. Note that a virtual function is far more expensive than a normal function call.
+Marking a function `virtual` allows subclass method to be called, even if the referencing type is superclass. If a function is not virtual but overridden, it will be called according to the type of reference not the type of object. Note that a virtual function is far more expensive than a normal function call because internally it uses a look up table to find the required method.
 
 ### const / mutable
 
@@ -63,7 +63,7 @@ Type a ();
 Type b = a;
 ```
 
-The second line of the code above does an shallow copy of `a` and assign to `b`, it simply means the object `a` 's memory is copied to form the object `b`. Sometimes this causes unexpected behaviour. For example if `a` stores an id then `b` will contains the same id, if id is meant to be unique in each instance then bad things happen.
+The second line of the code above does an shallow copy of `a` and assign to `b`, it simply means the object `a` 's memory is copied to form the object `b`. Sometimes this causes unexpected behavior. For example if `a` stores an id then `b` will contains the same id, if id is meant to be unique in each instance then bad things happen.
 
 The solution is to write a copy constructor for the `Type` class. It is a method that gets called when the copying like the second line above happens.
 
