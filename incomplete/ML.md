@@ -1,3 +1,5 @@
+## Andrew Ng's Lectures
+
 ### Evaluation Index
 
 #### Classification
@@ -119,12 +121,37 @@ If we initialize al weights as zero, some weights maybe updated with the same fu
 
 Kernels goes particularly well with svm, you can use kernels on other algorithm as well but it will not be as good as it goes with svm because there are computational tricks with svm to make it faster.
 
+### Implementation Notes
 
-
-## Implementation Notes
-
-- Check out effect of simultaneous/non-simultaneous update on gradient descent.
 - Graph of gradients/updates of any variable.
 - Try big/small learning rate.
 - Gradient Checking is useful for debugging implementation of back prop (the gradient of a parameter of a point should be similar to (grad of a point - $\epsilon$ + grad of a point + $\epsilon$) / 2$\epsilon$)
 
+## Recurrent Neural Network (RNN)
+
+Let say we want to translate text using neural network, how do we do it? Text come with different size so we do not have a fixed size input, instead of using a normal cell let's use a cell that will remember what it saw, called RNN cell.
+
+Traditional cell simply keep a weight matrix and process like $\alpha(x_i \cdot w_i)$, where $\alpha$ is activation, $x_i$ is the $i$-th input and $w_i$ is $i$-th weight. Let's add an additional matrix in the cell that no other can access it, represent the memory of the cell called $h_i$, now we have $\alpha(x_i \cdot w_i + x_i \cdot h_i)$. Yeah that's it! We have a cell that remember what had been fed to it. But this is far from what we want to achieve.
+
+Okay nice, we can train it using back propagation through time but it has a problem, we have to repeatedly multiply the weight matrix during $w$ during training, this is bad because if the value in $w$ is less/more than 1, then repeatedly multiplication will cause it to be very small/large, resulting in gradient vanishing/exploding problem. So some people come up with a variant of RNN cell called LSTM.
+
+The LSTM added some capabilities to traditional RNN. (//TODO: what is $C_t$ for?)
+
+1. Remove some data from the previous state, called **forget gate layer**. The coefficient is calculated using sigmoid function $\sigma$.
+
+   <img src="../images/ml/screenshot-colah.github.io-2020.06.11-17_36_41.png" alt="forget gate" style="zoom:80%;" />
+
+2. Add only parts of the new data, called **input gate layer**. But there is a candidate value $\tilde{C}_t$ which multiply with the value we want to keep. // TODO: what this candidate is for?
+
+   <img src="../images/ml/screenshot-colah.github.io-2020.06.11-17_40_08.png" alt="input gate" style="zoom:80%;" />
+
+    - Forget/Add operation happens here.
+
+      <img src="../images/ml/screenshot-colah.github.io-2020.06.11-17_42_38.png" alt="apply operations" style="zoom:80%;" />
+
+3. Filter the final output (//TODO: why do we need to filter?).
+
+   <img src="../images/ml/screenshot-colah.github.io-2020.06.11-17_44_39.png" alt="filter gate" style="zoom:80%;" />
+
+
+Assume we finished training and have the last hidden state to represent the current **context** of the input sentence (this is called the **encoder** part), we can try to infer from this state (this is called the **decoder** part) but it is turns out to be a bottleneck of this system as it does not hold enough information. So some people propose a solution to use all the past $h_i$ to infer the new sentence. Now we have a lot of information, more than we need, so we calculate a score (//TODO: how to calculate the score?) for each $h_i$ apply softmax (to signify higher value) and sum them: $h_i \cdot \text{softmax}(\text{score}_i)$ let's call this $hs_i$. During decoding, the same RNN cell takes in a $<end>$ input, producing the next $h_i$ and concatenate with $hs_i$ to form the final output (//TODO: why do we do this concatenation?).
