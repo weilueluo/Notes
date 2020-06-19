@@ -87,7 +87,7 @@ Linear Regression can be useful but what if we want to classify data into classe
 
 The answer turns out to be simple, we can plug the output of the original linear regression to the sigmoid function and we will get a value ranged from 0 to 1.
 
-<img src="D:\University_of_Manchester\Projects\learnML\images\desmos-logistic.png" alt="desmos-logistic-graph" style="zoom: 50%;" />
+<img src="D:\UOM\Projects\learnML\images\desmos-logistic.png" alt="desmos-logistic-graph" style="zoom: 50%;" />
 
 #### Cost Function
 
@@ -103,7 +103,7 @@ Cost(h_\theta(x),y)=-y\log(h_\theta(x))+(1-y)\log(1-h_\theta(x))
 $$
 Note that if $y=1$ then only LHS of $+$ is evaluated and if $y=0$ then only RHS of the $+$ is evaluated. Their graph looks like:
 
-<img src="D:\University_of_Manchester\Projects\learnML\images\desmos-neg-log-2.png" alt="desmos-neg-log-2" style="zoom:50%;" />
+<img src="D:\UOM\Projects\learnML\images\desmos-neg-log-2.png" alt="desmos-neg-log-2" style="zoom:50%;" />
 
 Also note that since $h_\theta(x)$ is ranged from $[0,1]$, the result of the cost function will be ranged from $[0, \inf)$ determined by how far the output from its target value is.
 
@@ -133,6 +133,8 @@ Let say we want to translate text using neural network, how do we do it? Text co
 
 Traditional cell simply keep a weight matrix and process like $\alpha(x_i \cdot w_i)$, where $\alpha$ is activation, $x_i$ is the $i$-th input and $w_i$ is $i$-th weight. Let's add an additional matrix in the cell that no other can access it, represent the memory of the cell called $h_i$, now we have $\alpha(x_i \cdot w_i + x_i \cdot h_i)$. Yeah that's it! We have a cell that remember what had been fed to it. But this is far from what we want to achieve.
 
+#### LSTM
+
 Okay nice, we can train it using back propagation through time but it has a problem, we have to repeatedly multiply the weight matrix during $w$ during training, this is bad because if the value in $w$ is less/more than 1, then repeatedly multiplication will cause it to be very small/large, resulting in gradient vanishing/exploding problem. So some people come up with a variant of RNN cell called LSTM.
 
 The LSTM added some capabilities to traditional RNN. (//TODO: what is $C_t$ for?)
@@ -153,5 +155,69 @@ The LSTM added some capabilities to traditional RNN. (//TODO: what is $C_t$ for?
 
    <img src="../images/ml/screenshot-colah.github.io-2020.06.11-17_44_39.png" alt="filter gate" style="zoom:80%;" />
 
-
 Assume we finished training and have the last hidden state to represent the current **context** of the input sentence (this is called the **encoder** part), we can try to infer from this state (this is called the **decoder** part) but it is turns out to be a bottleneck of this system as it does not hold enough information. So some people propose a solution to use all the past $h_i$ to infer the new sentence. Now we have a lot of information, more than we need, so we calculate a score (//TODO: how to calculate the score?) for each $h_i$ apply softmax (to signify higher value) and sum them: $h_i \cdot \text{softmax}(\text{score}_i)$ let's call this $hs_i$. During decoding, the same RNN cell takes in a $<end>$ input, producing the next $h_i$ and concatenate with $hs_i$ to form the final output (//TODO: why do we do this concatenation?).
+
+But this does not solve the problem completely because people notice that gradient starts to vanish again around 2000 words. (//?)
+
+#### CNN
+
+https://www.youtube.com/watch?v=ugWDIIOHtPA
+
+Some people proposed use CNN method to find long term dependency, this kind of works but not as good as attention mechanism, it allows parallel computation.
+
+#### Attention
+
+https://www.youtube.com/watch?v=ugWDIIOHtPA
+
+First use in computer vision 2014, highlight parts of the image that contribute to desire output
+
+#### Self-Attention
+
+$$
+\begin{align*}
+a^i&=x^i\cdot W^i(\text{embbeding})\\
+q^i&=a^i\cdot W^q(\text{query})\\
+k^i&=a^i\cdot W^k(\text{key})\\
+v^i&=a^i\cdot W^v(\text{value, information})\\
+\alpha_{ij}&=\frac{k^i\cdot q^j}{\sqrt{dimension}}(\text{attention}^*)\\
+\hat{\alpha_{ij}}&=\text{softmax}(\alpha_{ij}), (\text{softmax}(x_i)=\frac{exp(x_i)}{\sum_{i=0}^n exp(x_i)})\\
+b_i&=\sum_{k=0}^n \hat{\alpha_{ij}}\cdot v_k (\text{attentioned value})
+\end{align*}
+$$
+
+*The [reason](https://nlp.seas.harvard.edu/2018/04/03/attention.html) we divide by $\sqrt{d}$ is if both $k^i$ and $q^j$ matrix has mean=0 and std=1, then their dot product will have mean=0 and std = $\sqrt{d}$, by dividing $\sqrt{d}$ we can normalize the matrix. Note that each $b_i$ can be computed parallelly. Multi-head self attention is just multiple self-attention, same $a^i$ but now we have different $W$ matrix and have different $q,k,v$, multi-head attention allows different head to extract different kinds of information.
+
+Note that we do not have positional information, so we need to add a positional vector (//what it is) to $a^i$ before computing $a^i = a^i+e^i$, $e^i$ is not learned from data. Li Hung-Yi teacher suggest to change adding $e^i$ to concatenate a position vector where $n^{th}$ dimension is $1$ and others $0$, because he thinks that it is hard to find positional information if we do addition.
+
+Masked refers to decoder covers up some part of the input attention because we cannot allow the system to make use of information in the future.
+
+#### Transformer
+
+// lazy
+
+## Auto Encoder
+
+One of its problem is that if a code-matrix represent $1$, another code-matrix represent $3$, then add these code matrix together and divide by 2 does not necessarily output an image of $2$, it maybe just noise. So Some people propose **Variational Auto-Encoder (VAE)**.
+
+<img src="../images/ml/screenshot-www.youtube.com-2020.06.18-12_31_44.png" alt="vae" style="zoom:67%;" />
+
+add some noise to the input and hope that it can still learn how to produce correct output.
+
+## GAN
+
+> Lectures on YouTube, by 李宏毅 Hung-yi Lee
+
+Train two networks, one called **Generator** which produce result, another called **Discriminator** which tries to discriminate the result of generator. As they evolved, better result will be produced by the generator and hopefully we will get result where the discriminator can no longer discriminate.
+
+<img src="../images/ml/screenshot-www.youtube.com-2020.06.18-11_33_40.png" alt="gan idea" style="zoom: 67%;" />
+
+You first combine them into one single network, generator at the front and discriminator at the back. During training you will freeze one of them and improve another iteratively. For generator, it should try to maximize the score (gradient ascent) with random input and for discriminator it should produce a low score for generated image and high score for real image.
+
+<img src="../images/ml/screenshot-www.youtube.com-2020.06.18-11_59_43.png" alt="training" style="zoom:67%;" />
+
+Generator is like the decoder part of an auto-encoder
+
+// ? transform input to a style-matrix, use attention mechanism to convert style to different area of the image
+
+// called content-matrix, finally generate image from content matrix?
+
