@@ -14,11 +14,15 @@ There is always a **Storage** associated with a tensor, even for simple case (mi
 
 #### Tensor Accessor
 
-It is a class for convenience class that handles indexing calculation.
+It is a class for convenience class that handles tensor access calculation.
 
 #### Tensor Operations
 
-At most abstract level, two dispatches happen when you call an operation such as `torch.mm`. Dispatches are needed because implementations on CPU and CUDA (/ on float and int) are different. The first dispatch need to be dynamic because these kernels (?) may live in separate libraries.
+The input tensor is unwrapped (some don't, they just call other variable's implementations), then two dispatches happen. Dispatches are needed because implementations on CPU and CUDA (/ on float and int) are different. The first dispatch need to be dynamic because these kernels (?) may live in separate libraries.
+
+> // what does this mean in the original text?
+>
+> "However, once you unwrap and go into the non-Variable Tensor universe, that's it; you never go back to Variable (except by returning from your function.)"
 
 <img src="http://blog.ezyang.com/img/pytorch-internals/slide-12.png" alt="tensor operations dispatch" style="zoom: 33%;" />
 
@@ -40,3 +44,59 @@ For example `[0, 7, 0, 0, 8, 0, 0, 0, 0]` can be represent as:
 - `values=[7, 8]`, store non-zero values.
 - `indicies=[1, 4]`, store non-zero values' indices, more commonly written as `[[1], [4]]` for consistency over n-dim matrix.
 - `dense_shape=[9]`, store total number of elements so that we know how many trailing zeros are there.
+
+### Autograd
+
+> A great [link](https://towardsdatascience.com/automatic-differentiation-explained-b4ba8e60c2ad) that explains auto differentiation for single value. 
+>
+> If you have a vector then the gradient should be the Jacobian Matrix, generally speaking, `torch.autograd` is an engine for computing vector-Jacobian product.
+
+Pytorch implements auto gradient by storing extra information in the tensor, such as `AutogradMeta`, `grad_fn`. Using these metadata, the engine of the autograd act as a parallel graph executor to compute the gradient.
+
+<img src="http://blog.ezyang.com/img/pytorch-internals/slide-26.png" alt="autograd engine" style="zoom:33%;" />
+
+You can compute the gradient like the blue lines:
+
+<img src="http://blog.ezyang.com/img/pytorch-internals/slide-18.png" alt="without autograd" style="zoom:33%;" />
+
+But this is tedious and autograd provide a way to find the leaf variable's gradient easily by simply calling `loss.backward()`, the result will be stored in the `grad` variable (leaf variable only).
+
+##### [Determinant](https://www.youtube.com/watch?v=Ip3X9LOh2dk) (Extra)
+
+When you have a linear transformation, you are scaling the original space, the amount you scale is called **determinant**. For example:
+$$
+det
+\begin{pmatrix}
+3&2\\
+0&2
+\end{pmatrix}
+=6\\
+det
+\begin{pmatrix}
+-1&1\\
+-1&-1
+\end{pmatrix}
+=2\\
+det
+\begin{pmatrix}
+4&2\\
+2&1
+\end{pmatrix}
+=0\\
+\text{*0 because it squishes things into smaller dimension}
+$$
+But note that if the transformation flip the space over, then it has negative determinant (aka invert the orientation of space). For example
+$$
+det
+\begin{pmatrix}
+2&1\\
+-1&-3
+\end{pmatrix}
+=-5
+$$
+For 3D transformation, if the determinant is $0$, that means the dimension is squeezed into 2 or 1, this also means that the vectors define the 3D space are now linear dependent.
+
+### Mechanics & Writing Kernels & Workflow Efficiency
+
+// skipped, because I want to get some insights but not contributing to pytorch yet.
+
