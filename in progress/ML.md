@@ -197,11 +197,25 @@ Masked refers to decoder covers up some part of the input attention because we c
 
 ## Auto Encoder
 
-One of its problem is that if a code-matrix represent $1$, another code-matrix represent $3$, then add these code matrix together and divide by 2 does not necessarily output an image of $2$, it maybe just noise. So Some people propose **Variational Auto-Encoder (VAE)**.
+One of its problem is that if a code-matrix represent $1$, another code-matrix represent $3$, then add these code matrix together and divide by 2 does not necessarily output an image of $2$, it maybe just noise.
+
+#### Principle Components Analysis (PCA)
+
+The idea of PCA is to find new features that is linear combination of the old features such that projection of data in new sub space are as close as possible in the old space (in term of Euclidean distance).
+
+<img src="https://miro.medium.com/max/2000/1*ayo0n2zq_gy7VERYmp4lrA@2x.png" alt="PCA looking for best linear subspace using linear algebra" style="zoom: 50%;" />
+
+
+
+#### Variational Auto-Encoder (VAE)
+
+Some people propose to use VAE to solve this problem. A VAE is an auto-encoder whose encodings distribution is regularized during training in order to ensure that its latent space has good properties that allow us to generate some new data. It is usually follows some prior distribution such as gaussian distribution.
 
 <img src="../images/ml/screenshot-www.youtube.com-2020.06.18-12_31_44.png" alt="vae" style="zoom:67%;" />
 
 add some noise to the input and hope that it can still learn how to produce correct output.
+
+
 
 ## GAN
 
