@@ -31,3 +31,11 @@ inspired by neural autoregressive generative models that can model complex distr
     
 
 - 
+
+
+
+
+
+
+
+### ASK PHD STUDENT <yian.deng@manchester.ac.uk>
