@@ -72,10 +72,39 @@ Reading is not optional extra and should be the main activity, Ask in synchronou
 - Reading list
   - https://eu.alma.exlibrisgroup.com/leganto/readinglist/lists/323050210930001631
 
-## Advanced Computer Graphics
+## [Documents & Data on the web](https://online.manchester.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_62009_1&content_id=_11525420_1)
 
-quiz + mid term + final
+### Structure & Organisation
 
-## Documents & Data on the web
+- Weekly workshops 
+  - 2 hours of “synchronous” activities 
+  - Structured input and exploratory activities. 
+  - A blend of
+    - Brief presentations (micro-lectures, 10-15 min, recorded) 
+    - Hands-on activities (5-10 min) 
+    - Discussion of materials and homework tasks (There will be some up-front material to read)
+  - No single style or balance: some individual/group work, some trying of software, some discussions (polls), quizzes. 
+  - Via zoom (Meeting ID: 985 3662 8429; Passcode: COMP38211)
 
-https://online.manchester.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_62009_1&content_id=_11525420_1
+- Weekly laboratories 
+  - 1 hour of “synchronous” activities 
+  - Weekly timetabled hands-on sessions for trying out new systems or techniques (set tasks, known answers). 
+    - Preparation for course work 
+  - Opportunity to ask questions about the set tasks with more open ended/specific discussions and feedback
+    - Working towards your coursework submission 
+  - Via the same zoom 
+    - Break-out rooms for specific discussions
+
+### Assessment
+
+- Summative: 100% coursework 
+  - Design, implementation and analysis/discussion 
+    - CW submissions will involve both code and discussion of issues. 
+    - Needed: Linux, Java, Eclipse, Hadoop 
+  - Course work 1 - Document indexing (weight 0.6)
+    -  due November 24th (Week 8) 
+  - Course work 2 - Data indexing (weight 0.4)
+    - due January 15th 2021 (Week 12) 
+- Formative 
+  - Weekly “try at home” exercises 
+  - Quizzes

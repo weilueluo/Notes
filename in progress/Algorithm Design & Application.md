@@ -96,9 +96,19 @@ If all v are reachable from each other
       - dfs on a v, if any v is not reached, it is not strongly connected
       - then we reverse all edges' direction
       - dfs on the same v again, if all v is reached again, then it is strongly connected
-  - Computing the transitive closure G∗ of  G.
+  - Computing the transitive closure Gâˆ— of  G.
 
 - back edges, which connect a vertex to an ancestor in the DFS tree
 - forward edges, which connect a vertex to a descendant in the DFS tree
 - cross edges, which connect a vertex to a vertex that is neither its ancestor nor
   its descendant.
+
+## Ch 16
+
+- N = flow network
+- cut = split V in N to be (V+, V-)
+  - forward flow = V+ -> V-
+  - backward flow = V- -> V+
+  - capacity of cut = sum of capacity of edges in forward flow
+  - value of flow / flow across cut = sum of capacity of edges in forward flow - sum of capacity of edges in backward flow
+
