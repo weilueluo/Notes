@@ -60,7 +60,35 @@ get stuck playing the same chords for some time
 
     - auto-encoder, hope that bottleneck layer capture some features of the data that we can manipulate
 
-    
+
+### Juke Box
+
+- hop length = T / S, T = number of samples, S = number of discrete code that uses to represents the music
+
+- 4 mins ~= 10millions, each position about 16 bits, 44.1khz CD quality
+
+- encoding E that maps each h in x to e in latent space E and decoding to decode the e back to input space, thus VAE with discretization bottleneck
+  <img src="D:\UOM\Projects\Notes\in progress\3rd_year_project.assets\image-20201121165417964.png" alt="image-20201121165417964" style="zoom: 80%;" />
+  sg = stop gradient operation that passes zero gradient during back propagation
+
+  - reconstruction loss L improves the decoder
+  - cookbook L improves distance between h and e
+  - commit is to prevent the encoding for fluctuation too much, and beta control the amount of contribution to this loss (?).
+
+  train a hierarchy model with decreasing size of H using non-autogressive encoder-decoder with simple mean-squared loss
+
+  in this paper they use 3 layers, each level they use causal 1-d dilated concolutions, interleaved with downsampling and upsampling 1-d convolutions to match different hop length. They train these encoders separately, because the bottlenecked top levels are experiencing collapse.
+
+- VQVAEs are known to suffer from codebook collapse, where input are map to single or little embedding vectors, and they use random restarts: when the mean usage of code book fall below a threshold, randomly reset it to one of the encoder outputs from current batch (?).
+
+- when using sample level reconstruction loss, the model tends to reconstruct low frequencies only, to capture mid-to-high frequencies, we add a spectral loss defined as:
+  <img src="D:\UOM\Projects\Notes\in progress\3rd_year_project.assets\image-20201121173317089.png" alt="image-20201121173317089" style="zoom:80%;" />
+  STFT = Short-time Fourier transform(?)
+
+- The upsampler is transformer with 
+
+  
+
 
 
 ## Miscellaneous
@@ -96,13 +124,19 @@ Where H(p) is the entropy and H(p,q) is the cross-entropy
 
 
 
-### ASK PHD STUDENT <yian.deng@manchester.ac.uk>
+### Sound Font
 
-<yian.deng@manchester.ac.uk>
+**Sound Font** is a brand name that collectively refers to a file format and associated technology that uses [sample-based synthesis](https://en.wikipedia.org/wiki/Sample-based_synthesis) to play [MIDI](https://en.wikipedia.org/wiki/MIDI) files.
 
-- KL divergence and cross entropy
+### Posterior Collapse - VAE
+
+We say a posterior is collapsing, when signal from input xx to posterior parameters is either **too weak** or **too noisy**, and as a result, decoder starts ignoring zz samples drawn from the posterior qϕ(z|x)qϕ(z|x).
 
 
+
+#### PHD STUDENT
+
+yian.deng@manchester.ac.uk
 
 
 
