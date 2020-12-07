@@ -1,6 +1,8 @@
+
+
 ### PixelCNN
 
-https://arxiv.org/pdf/1606.05328.pdf
+> https://arxiv.org/pdf/1606.05328.pdf
 
 A autoregressive network that learnt the relationship between pixels, then generate them one by one. It can learn all pixels' distribution in parallel using CNN. It is trained with masked images and kernels. It models the joint probability distribution x as product of element-wise conditional distributions for each element. It improves on the pioneer model (pixelRNN, RNN does not work well for >100 samples)
 
@@ -114,14 +116,6 @@ Latent space is not continuous, it can only work on training data
 
 The Kullback–Leibler divergence (also called relative entropy) is a measure of how one probability distribution is different from a second, reference probability distribution. 
 
-![image-20201024183035093](C:\Users\weilu\AppData\Roaming\Typora\typora-user-images\image-20201024183035093.png)
-
-In term of difference between cross-entropy, their relationship can be model as:
-
-![image-20201030131936448](C:\Users\weilu\AppData\Roaming\Typora\typora-user-images\image-20201030131936448.png)
-
-Where H(p) is the entropy and H(p,q) is the cross-entropy 
-
 
 
 ### Sound Font
@@ -134,16 +128,23 @@ We say a posterior is collapsing, when signal from input xx to posterior paramet
 
 
 
-#### PHD STUDENT
+## Talk
 
-yian.deng@manchester.ac.uk
+Hi, I am weilue and my project is about music generation. My goal for this project is to find a way to generate pleasurable music with neural networks, there have been quite a few researches done by others in the past and  recently, an AI research and deployment company called [OpenAI](https://jukebox.openai.com/?song=787733605) has released a piece of work that achieved state-of-the-art result on music generation, however, their model requires a very long time to train and produce music, and one of my plan is to create a simpler model that can generate music more efficiently without losing too much quality compared to the original model.
 
+There are a few approaches that I have in mind to tackle, for example, the model released by OpenAI is trained on the raw audio, it could be useful to operate on the another audio format called midi, the good thing about it it is that it does not store the waveform but tells you what and when to play an note, therefore reducing the input size and allows the generator to work on a higher level of abstraction.
 
+Although I will browse many ideas from this model, but I will also gather some ideas from other researches:
 
+- While reading about previous work, I found a model called [MidiNet](https://richardyang40148.github.io/TheBlog/midinet_arxiv_demo.html) by Richard Yang, they used a CNN + GAN network, and it is able to produce coherent samples with a much shorter training time, there are also some other GAN networks that attempted to create music, but they did not produce a high level of coherence, and the reason behind is probably due to the heavy use of convolutional layer in MidiNet, so I will definite try some variants on their model.
+  (By the way there is a similar result from [google/magenta](google/magenta) and [museGAN](https://salu133445.github.io/musegan/results) that uses RNN rather than CNN, it seems to produce a more general result but requires much longer time to train, I will attempt it if I have time).
+- Another piece of work that I found interesting is [WaveNet](https://deepmind.com/blog/article/wavenet-generative-model-raw-audio) from 2016, they proposed an interesting layer called diluted causal convolution  that increases the preceptive fields drastically, this is important because the input for audio is often very large which made it hard for many models at that time to learn long term dependencies, although it is not so good at generating music, but it achieved state-of-the-art result for text reading at that time. (Actually OpenAI later also found that it is good at encoding audio information, and used in model that I mentioned just now.)
 
+So in summary, combining these findings, I will attempt the following two types of models:
 
-- finished up some RNN papers, some of the best samples comes from multi-track generation
-- moved on to disentangling VAE - VQ-VAE: vector quantized VAE that basically uses discrete 
-- started on the openai papers
-  - they encode information of vocal using VQ-VAE, but the result 
-  - downsampling and upsampling process introduces discernable noise
+- Simplified OpenAI model that I mention at the start,
+- and GAN with diluted causal convolution network I talked about just now.
+
+This project can be potentially useful for helping people like music producers to get some ideas for creating music, because while the OpenAI model can produce exciting result, it is not so practical for someone to wait several hours for 20 seconds of music. For those models that is fast, they are limited to some simple rhythms and therefore may not be very helpful.
+
+During my demo in the spring, hopefully you will see some music samples that generated by my model and I am looking forwards to see what kinds of music can my model generate! Thank you!

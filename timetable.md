@@ -29,3 +29,10 @@
 
 - Tim Morris 10.00 to 11.00 every Wednesday for non-academic questions.
 
+## Deadlines
+
+- Algorithms Coursework: 4 Dec, Fri
+- Cryptography Coursework: 16 Dec, Wed
+- AI & Games Project: 18 Dec, Fri
+- Documents & Data Coursework: 15 Jan
+
