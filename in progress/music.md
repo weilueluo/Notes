@@ -33,13 +33,13 @@
 
 表示第一个音演奏，第二个音不演奏。异音/嵌套连接则表示平滑些的变换。
 
-![连音](../images/music/screenshot-www.bilibili.com-2020.06.19-11_38_10.png)
+![连音](music.assets/screenshot-www.bilibili.com-2020.06.19-11_38_10.png)
 
 #### 切分音符
 
 简谱前面会有一个分数，用来表示这个曲子的拍子信息，比如$\frac{2}{4}$ 表示每个小节有2拍，以4分音符为一拍。
 
-<img src="../images/music/screenshot-www.bilibili.com-2020.06.19-11_49_22.png" alt="切分音符" style="zoom:67%;" />
+<img src="music.assets/screenshot-www.bilibili.com-2020.06.19-11_49_22.png" alt="切分音符" style="zoom:67%;" />
 
 这里$\underset{-}{6}$和$\underset{-}{3}$是8分音符，$\overset{*}{5}$是2分音符且为连音。注意8分音符是不够4分音符的，所以5是被切开的连音。
 
@@ -58,12 +58,12 @@
 
 | 类型     | 标记                                                         | 顺序                                                         |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从头反复 | <img src="../images/music/screenshot-www.bilibili.com-2020.06.20-09_42_51.png"  /> | $A\rightarrow B\rightarrow C\rightarrow A\rightarrow B\rightarrow C$ |
-| 从头反复 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_45_19.png) | $A\rightarrow B\rightarrow A\rightarrow B\rightarrow C$      |
-| 部分反复 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_47_51.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow C\rightarrow D$ |
-| 部分反复 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_49_12.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow C\rightarrow D$ |
-| 结尾不同 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_50_07.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow A\rightarrow B\rightarrow E\rightarrow F$ |
-| 跳跃反复 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_50_55.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow A\rightarrow B\rightarrow E\rightarrow F$ |
+| 从头反复 | <img src="music.assets/screenshot-www.bilibili.com-2020.06.20-09_42_51.png"  /> | $A\rightarrow B\rightarrow C\rightarrow A\rightarrow B\rightarrow C$ |
+| 从头反复 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_45_19.png) | $A\rightarrow B\rightarrow A\rightarrow B\rightarrow C$      |
+| 部分反复 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_47_51.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow C\rightarrow D$ |
+| 部分反复 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_49_12.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow C\rightarrow D$ |
+| 结尾不同 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_50_07.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow A\rightarrow B\rightarrow E\rightarrow F$ |
+| 跳跃反复 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_50_55.png) | $A\rightarrow B\rightarrow C\rightarrow D\rightarrow A\rightarrow B\rightarrow E\rightarrow F$ |
 
 #### 倚音 （装饰音）
 
@@ -71,8 +71,8 @@
 
 | 类型   | 记号                                                         | 大概效果                                                     |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 单倚音 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_54_34.png) | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_56_53.png) |
-| 复倚音 | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_56_14.png) | ![](../images/music/screenshot-www.bilibili.com-2020.06.20-09_57_30.png) |
+| 单倚音 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_54_34.png) | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_56_53.png) |
+| 复倚音 | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_56_14.png) | ![](music.assets/screenshot-www.bilibili.com-2020.06.20-09_57_30.png) |
 
 #### 音程
 
@@ -84,7 +84,7 @@
 
 音数指的是两个音之间包含的全音和半音的数目。每个音和相邻的音距离有所不同：
 
-<img src="../images/music/screenshot-www.bilibili.com-2020.06.20-11_15_25.png" alt="音数" style="zoom:67%;" />
+<img src="music.assets/screenshot-www.bilibili.com-2020.06.20-11_15_25.png" alt="音数" style="zoom:67%;" />
 
 比如$1-3$之间有两个全音，所以音数为$2$。而$2-4$之间有一个全音一个半音，所以音数为$1\frac{1}{2}$。
 
@@ -108,7 +108,7 @@
 
 #### 变化音
 
-<img src="../images/music/screenshot-www.bilibili.com-2020.06.21-11_19_51.png" alt="变化音" style="zoom:80%;" />
+<img src="music.assets/screenshot-www.bilibili.com-2020.06.21-11_19_51.png" alt="变化音" style="zoom:80%;" />
 
 #### 和弦
 

@@ -21,9 +21,9 @@
 
 - **Wednesday Synchronous Sessions 10-11:** https://online.manchester.ac.uk/webapps/collab-ultra/tool/collabultra?course_id=_62527_1&mode=quick&mode=view
 
-### Third Year Project
+## Third Year Project
 
-- **Meeting with Mu Ting Ting Friday 1pm:** https://zoom.us/j/6567172822
+- **Meeting with Mu TingTing Friday 1pm:** https://zoom.us/j/6567172822
 
 ## Other
 
