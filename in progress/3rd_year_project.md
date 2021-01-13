@@ -128,40 +128,23 @@ We say a posterior is collapsing, when signal from input xx to posterior paramet
 
 
 
-## Talk
+## MIDI
 
-- WaveNet from deepmind
-  - Convolution
-- Magenta from google
-  - RNN + Attention
-- MuseGan AI & Music Lab from Taiwan (China)
-  - 
-
+- note on: key to press
+- note off: key to release, velocity=0
+- channels: which channels to send the sound, 16 channels for standard midi files
+- velocity: how fast to strike the key, faster=louder
+- time: the waiting time between current and last operation, duration is the sum of time from each message tr
 
 
 
+- Time Signature: number of beats / type of notes, most common is 4/4 (aka C) 
+  - 4/4: strong weak medium weak
+  - 3/4: strong weak weak
+  - 2/4: strong weak
+  - 6/8: strong weak weak medium weak weak
 
 
-
-
-
-
-
-
-
-// 1st draft
-
-there have been quite a few researches done by others in the past and  recently, an AI research and deployment company called [OpenAI](https://jukebox.openai.com/?song=787733605) has released a piece of work that achieved state-of-the-art result on music generation, however, their model requires a very long time to train and produce music, and one of my plan is to create a simpler model that can generate music more efficiently without losing too much quality compared to the original model.
-
-There are a few approaches that I have in mind to tackle, for example, the model released by OpenAI is trained on the raw audio, it could be useful to operate on the another audio format called midi,  the generator to work on a higher level of abstraction.
-
-Although I will browse many ideas from this model, but I will also gather some ideas from other researches:
-
-- While reading about previous work, I found a model called [MidiNet](https://richardyang40148.github.io/TheBlog/midinet_arxiv_demo.html) by Richard Yang, they used a CNN + GAN network, and it is able to produce coherent samples with a much shorter training time, there are also some other GAN networks that attempted to create music, but they did not produce a high level of coherence, and the reason behind is probably due to the heavy use of convolutional layer in MidiNet, so I will definite try some variants on their model.
-  (By the way there is a similar result from [google/magenta](google/magenta) and [museGAN](https://salu133445.github.io/musegan/results) that uses RNN rather than CNN, it seems to produce a more general result but requires much longer time to train, I will attempt it if I have time).
-- Another piece of work that I found interesting is [WaveNet](https://deepmind.com/blog/article/wavenet-generative-model-raw-audio) from 2016, they proposed an interesting layer called diluted causal convolution  that increases the preceptive fields drastically, this is important because the input for audio is often very large which made it hard for many models at that time to learn long term dependencies, although it is not so good at generating music, but it achieved state-of-the-art result for text reading at that time. (Actually OpenAI later also found that it is good at encoding audio information, and used in model that I mentioned just now.)
-
-- 
 
 
 
