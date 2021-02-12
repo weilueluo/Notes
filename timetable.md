@@ -24,6 +24,13 @@
 ## Third Year Project
 
 - **Meeting with Mu TingTing Friday 1pm:** https://zoom.us/j/6567172822
+- email before Thursday to use individual session
+  13:00: Jessica
+  13:20: Maks
+  13:40: Weilue
+  14:40: Calvin
+  15:00:  Vlad
+  15:20: Den
 
 ## Other
 
@@ -36,3 +43,29 @@
 - AI & Games Project: 18 Dec, Fri
 - Documents & Data Coursework: 15 Jan
 
+
+
+- NLS cwk1: mar 12, cwk2 april 30
+
+
+
+
+
+## S2
+
+### COMP34120 S2
+
+- x.zeng@manchester.ac.uk
+- https://zoom.us/j/4218194281
+
+### COMP32412 IoT
+
+- The link for Thursday lectures (until Easter break) is: https://zoom.us/j/96786680587
+- The link for Friday lectures (until Easter break) is: https://zoom.us/j/94373002075
+- The password for both links is: IoT2021
+
+### COMP37212
+
+- https://zoom.us/j/4979779118 
+- Meeting ID: 497 977 9118
+- Passcode: 699879
