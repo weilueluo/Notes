@@ -8,12 +8,12 @@
 - 唱名：**do re mi fa so la si**
 - 音名：**C   D  E   F  G  A  B**
 
-| 名字   | 符号                                        |
-| ------ | ------------------------------------------- |
+| 名字  | 符号                                          |
+|-----|---------------------------------------------|
 | 倍低音 | $\underset{\bullet}{\underset{\bullet}{1}}$ |
-| 低音   | $\underset{\bullet}{1}$                     |
-| 中音   | $1$                                         |
-| 高音   | $\overset{\bullet}{1}$                      |
+| 低音  | $\underset{\bullet}{1}$                     |
+| 中音  | $1$                                         |
+| 高音  | $\overset{\bullet}{1}$                      |
 | 倍高音 | $\overset{\bullet}{\overset{\bullet}{1}}$   |
 | 休止符 | 0                                           |
 

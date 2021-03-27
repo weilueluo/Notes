@@ -69,3 +69,7 @@
 - https://zoom.us/j/4979779118 
 - Meeting ID: 497 977 9118
 - Passcode: 699879
+
+#### TYP
+
+Thurs 1.40pm https://zoom.us/j/6567172822
